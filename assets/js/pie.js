@@ -1,8 +1,8 @@
 var dataSet = [
-    { label: "高雄大學", data: 4625, color: "#005CDE" },
-    { label: "東華大學", data: 3265, color: "#00A36A" },
-    { label: "屏科大", data: 2658, color: "#7D0096" },
-    { label: "暨南大學", data: 1203, color: "#992B00" },
+    { label: "國立高雄大學", data: 10, color: "#005CDE" },
+    { label: "國立屏東科技大學", data: 6, color: "#00A36A" },
+    { label: "國立清華大學", data: 4, color: "#7D0096" },
+    { label: "中國文化大學", data: 2, color: "#992B00" },
     
 ];
 var options = {
