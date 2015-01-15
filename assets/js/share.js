@@ -25,9 +25,7 @@ function fbshare(v1,img){
 				scope: 'email,publish_stream'
 			});
 		}
-	});
-	js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);	
+	});	
 }
 
 function sd(cap,img){
