@@ -29,18 +29,20 @@ function Vote(value) {
     query.equalTo("user_mail", user_mail);
     query.find({
         success: function(String) {
-            re = /^.+@.+\..{2,3}$/;
-            if (re.test(user_mail)){
-                alert("Email符合，計票中...");
-            }else{
-                alert("Email格式不符，請重新輸入！");
-                window.location.href = "index.htm";
-            }
+             re = /^.+@.+\..{2,3}$/;
+        if (re.test(user_mail)){
+              alert("Email符合，計票中...");
+         }else{
+              alert("Email格式不符，請重新輸入！");
+              window.location.href = "index.htm";
+              
+        }
+
         },
         error: function(error) {
 
         }
-    });    
+    });
 
     query.count({
         success: function(count) {
@@ -126,8 +128,7 @@ function Vote(value) {
             alert("Error");
             window.location.href = "index.htm";
         }
-    }); 
-
+    });     
 }
 
 function list() {
