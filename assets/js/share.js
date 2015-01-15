@@ -1,10 +1,10 @@
 <script type="text/javascript">
 FB.init({
-    appId: '538493282919996',
+    appId: '555598871210100',
     status: true,
     cookie: true,
     xfbml: true,
-    channelURL: 'http://dingpachan.github.io/test/', //
+    channelURL: 'http://hsiufeng.github.io/green/', //
     oauth: true
 });
 function fbshare(v1,img){
