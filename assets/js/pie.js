@@ -1,28 +1,3 @@
-
-/*Parse.initialize("TrjA8LPCC4ONymlTyV86tdISYzlOelDVfvSBEPCv", "qWoj6q116WqoLDQuYb5kuCMuVIgw0M6AZCExscDJ");
-var vote = Parse.Object.extend("vote");
-var query = new Parse.Query(vote);
-query.descending("vote_num");
-var dataSet = []; 
-var school = new Array();
-var vote_amount = new Array();
-query.find({
-    function piedata(vote){
-        for (var i = 0; i < 4; i++) {
-            /*var object = results[i];*/
-            /*dataSet.push("{label:"+object.get('school_name')+", data:"+object.get('vote_num')+",color: #005CDE},");
-            var school[i] = vote.get("school_name");
-            var vote_amount[i] = vote.gat("vote_num");
-        } 
-        return school[], vote_amount[];
-    }
-});*/
-
-
-/*for (var i=0; i < 20; i++){
-    var Num1 = 5 + Math.floor(Math.random() * 255);
-    dataset.push(Num1);
-};*/
 $(document).ready(function () {
       Parse.initialize("TrjA8LPCC4ONymlTyV86tdISYzlOelDVfvSBEPCv", "qWoj6q116WqoLDQuYb5kuCMuVIgw0M6AZCExscDJ");
       var vote = Parse.Object.extend("vote");
