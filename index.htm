@@ -25,7 +25,7 @@
 <script type="text/javascript" src="assets/js/jquery.flot.pie.js"></script>
 <script type="text/javascript" src="assets/js/pie.js"></script>
 <script type="text/javascript" src="assets/js/vote.js"></script>
-<script type="text/javascript" src="assets/js/shareonfb.js"></script>
+
 </head>
 <body>
 <script>
@@ -44,6 +44,22 @@
       js.src = "//connect.facebook.net/en_US/sdk.js";
       fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+
+   function postToFeed(pic, cap) {
+      var obj = {
+         method: 'feed',
+         name: '台灣綠色莽原爭霸戰',
+         caption: cap,
+         link: 'http://hsiufeng.github.io/green/index.htm',
+         picture: 'http://hsiufeng.github.io/green/school/'+pic+'.jpg'
+      };
+ 
+   function callback(response) {
+      document.getElementById('msg').innerHTML = "Post ID: " + response['post_id'];
+   }
+ 
+   FB.ui(obj, callback);
+   }
 </script>
 
 <div class="container">
@@ -69,7 +85,7 @@
                <p>國立屏東科技大學</p>
                </div>
             </div>
-            <div class="fb-share-button" data-href="http://hsiufeng.github.io/green/index.htm" data-layout="icon_link"><img title="share" src="assets/img/icon-fb.png"></div><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">我要投票</button>
+            <div class="fbshare"><a href="#" onclick="javascript:postToFeed(1,'屏東科技大學');"><img title="share" src="assets/img/icon-fb.png"></a></div><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">我要投票</button>
          </div>
          <!-- Modal -->
          <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">   
