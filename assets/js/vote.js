@@ -36,7 +36,12 @@ function Vote(value) {
               alert("Email格式不符，請重新輸入！");
               window.location.href = "index.htm";
               
-            }
+        }
+        },
+        error: function(error) {
+
+        }
+    });
 
     query.count({
         success: function(count) {
@@ -142,9 +147,5 @@ function list() {
 	        alert("Error: " + error.code + " " + error.message);
         }
     });
-    },
-        error: function(error) {
-
-        }
-    });
+    
 }   
