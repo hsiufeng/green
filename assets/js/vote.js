@@ -31,19 +31,9 @@ function Vote(value) {
         success: function(String) {
              re = /^.+@.+\..{2,3}$/;
         if (re.test(user_mail)){
-              alert("Email符合，計票中...");
-         }else{
-              alert("Email格式不符，請重新輸入！");
-              window.location.href = "index.htm";
-              
-        }
-        },
-        error: function(error) {
+            alert("Email符合，計票中...");
 
-        }
-    });
-
-    query.count({
+            query.count({
         success: function(count) {
             if(count>0){  //是否投過票
                 query.descending("createdAt");
@@ -56,35 +46,35 @@ function Vote(value) {
                            alert("你今天已經投過票了!");
                            window.location.href = "index.htm";
                         }else{
-                           	var school = Parse.Object.extend("school");
-                           	var school = new school();
-                           	school.set("school_num", school_num);
-                           	school.set("user_mail", user_mail);
-                           	school.save(null, {  
-                             	success: function(vote) {
+                            var school = Parse.Object.extend("school");
+                            var school = new school();
+                            school.set("school_num", school_num);
+                            school.set("user_mail", user_mail);
+                            school.save(null, {  
+                                success: function(vote) {
 
                                 var vote = Parse.Object.extend("vote");
                                 var query = new Parse.Query(vote);
                                 query.equalTo("school_no", school_num);
                                 query.find({
-                                	success: function(results) {
-                                    	var object = results[0];
-                                       	var vote_num = object.get('vote_num');
-                                       	vote_num = vote_num+1;
-                                       	results[0].save("vote_num", vote_num);
-                                   	},
-                                   	error: function(error) {
-                                    	alert("Error: " + error.code + " " + error.message);
-                                   	}
+                                    success: function(results) {
+                                        var object = results[0];
+                                        var vote_num = object.get('vote_num');
+                                        vote_num = vote_num+1;
+                                        results[0].save("vote_num", vote_num);
+                                    },
+                                    error: function(error) {
+                                        alert("Error: " + error.code + " " + error.message);
+                                    }
                                 });
                                 alert('投票成功!');
                                 window.location.href = "index.htm";
-                            	},
-                            	error: function(vote, error) {
-                                	alert('fail');
-                                	window.location.href = "index.htm";
-                            	}
-                        	});
+                                },
+                                error: function(vote, error) {
+                                    alert('fail');
+                                    window.location.href = "index.htm";
+                                }
+                            });
                         }
                     },
                     error: function(error) {
@@ -99,25 +89,25 @@ function Vote(value) {
                 school.set("user_mail", user_mail);
                 school.save(null, { 
                     success: function(vote) {
-                    	var vote = Parse.Object.extend("vote");
+                        var vote = Parse.Object.extend("vote");
                         var query = new Parse.Query(vote);
                         query.equalTo("school_no", school_num);
                         query.find({
-                        	success: function(results) {
+                            success: function(results) {
                             var object = results[0];
                             var vote_num = object.get('vote_num');
                             vote_num = vote_num+1;
                             results[0].save("vote_num", vote_num);
-                        	},
-                        	error: function(error) {
-                        		alert("Error: " + error.code + " " + error.message);
-                        	}
-                    	});
-                    	alert('投票成功!');
-                    	window.location.href = "index.htm";
+                            },
+                            error: function(error) {
+                                alert("Error: " + error.code + " " + error.message);
+                            }
+                        });
+                        alert('投票成功!');
+                        window.location.href = "index.htm";
                     },
                     error: function(vote, error) {
-                    	alert('fail');
+                        alert('fail');
                         window.location.href = "index.htm";
                     }
                 });
@@ -127,7 +117,19 @@ function Vote(value) {
             alert("Error");
             window.location.href = "index.htm";
         }
-    });     
+    });
+
+         }else{
+              alert("Email格式不符，請重新輸入！");
+              window.location.href = "index.htm";      
+        }
+        },
+        error: function(error) {
+
+        }
+    });
+
+         
 }
 
 function list() {
