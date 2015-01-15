@@ -37,11 +37,7 @@ function Vote(value) {
               window.location.href = "index.htm";
               
             }
-        },
-        error: function(error) {
 
-        }
-    });
     query.count({
         success: function(count) {
             if(count>0){  //是否投過票
@@ -144,6 +140,11 @@ function list() {
          },
         error: function(error) {
 	        alert("Error: " + error.code + " " + error.message);
+        }
+    });
+    },
+        error: function(error) {
+
         }
     });
 }   
