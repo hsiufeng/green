@@ -34,6 +34,7 @@ function Vote(value) {
               alert("Email符合，計票中...");
          }else{
               alert("Email格式不符，請重新輸入！");
+              window.location.href = "index.htm";
               
             }
         },
