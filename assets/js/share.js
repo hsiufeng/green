@@ -33,7 +33,7 @@ function sd(cap,img){
 		{ 
 			method: 'feed',
 			name: '台灣綠色莽原爭霸戰',
-			link: 'http://hsiufeng.github.io/green/',
+			link: 'http://hsiufeng.github.io/green/index.htm',
 			picture: 'https://github.com/hsiufeng/green/school/'+img,
 			caption: cap, 
 			description: ' 向大自然致敬！台灣最有大自然氛圍的校園？森林、綠地、空曠、野生動物！？到底獎落誰家，由你來揭曉！ ', 
