@@ -25,8 +25,26 @@
 <script type="text/javascript" src="assets/js/jquery.flot.pie.js"></script>
 <script type="text/javascript" src="assets/js/pie.js"></script>
 <script type="text/javascript" src="assets/js/vote.js"></script>
+<script type="text/javascript" src="assets/js/shareonfb.js"></script>
 </head>
 <body>
+<script>
+   window.fbAsyncInit = function() {
+      FB.init({
+         appId : '555598871210100',
+         xfbml : true,
+         version : 'v2.1'
+      });
+   };
+
+   (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+</script>
 
 <div class="container">
    <div class="row">
@@ -51,7 +69,7 @@
                <p>國立屏東科技大學</p>
                </div>
             </div>
-            <div class="fbshare"><a href="javascript:share();"><img title="share" src="assets/img/icon-fb.png"></a></div><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">我要投票</button>
+            <div class="fb-share-button" data-href="http://hsiufeng.github.io/green/index.htm" data-layout="icon_link"><a href="javascript: share_on_fb();"></div><button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1">我要投票</button>
          </div>
          <!-- Modal -->
          <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">   
