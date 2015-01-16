@@ -56,10 +56,10 @@ $(document).ready(function () {
             var html = [];
             var percent = parseFloat(item.series.percent).toFixed(2);        
      
-            html.push("<div style=\"border:1px solid grey;background-color:",
+            html.push("<div style='border:1px solid grey;background-color:",
                  item.series.color,
-                 "\">",
-                 "<span style=\"color:white\">",
+                 "'>",
+                 "<span style='color:white'>",
                  item.series.label,
                  " : ",
                  $.formatNumber(item.series.data[0][1], { format: "#,###", locale: "us" }),
