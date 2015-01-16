@@ -48,36 +48,7 @@ $(document).ready(function () {
          error: function(error) {
             alert("Error: " + error.code + " " + error.message);
          }
-         /*var dataSet2 = function(results);
-         return dataSet;*/
       });
-
-  /*  console.log(dataSet);
-    var options = {
-    	series: {
-    	    pie: {
-    	        show: true,                
-    	        label: {
-    	            show:true,
-    	            radius: 0.8,
-    	            formatter: function (label, series) {                
-    	                return '<div style="border:1px solid grey;font-size:8pt;text-align:center;padding:5px;color:white;">' +
-    	                label + ' : ' +
-    	                Math.round(series.percent) +
-    	                '%</div>';
-    	            },
-    	            background: {
-    	                opacity: 0.8,
-    	                color: '#000'
-    	            }
-    	        }
-    	    }
-        	
-    	}
-
-    };*/
-
-
     $.fn.showMemo = function () {
         $(this).bind("plothover", function (event, pos, item) {
             if (!item) { return; }
@@ -99,26 +70,3 @@ $(document).ready(function () {
         });
     }
 });
-
-
-/*var object_1;
-object_1=query;
-alert(object_1[0]);
-var school={};
-var vote_amount={};
-    school[0]=object_1[0].get('school_name');
-    school[1]=object_1[1].get('school_name');
-    school[2]=object_1[2].get('school_name');
-    school[3]=object_1[3].get('school_name');
-    vote_amount[0]=object_1[0].get('vote_num');
-    vote_amount[1]=object_1[1].get('vote_num');
-    vote_amount[2]=object_1[2].get('vote_num');
-    vote_amount[3]=object_1[3].get('vote_num');
-
-var dataSet = [
-    
-    { label: school[0] , data: vote_amount[0], color: "#005CDE" },
-    { label: school[1] , data: vote_amount[1], color: "#00A36A" },
-    { label: school[2] , data: vote_amount[2], color: "#7D0096" },
-    { label: school[3] , data: vote_amount[3], color: "#992B00" },
-];*/
