@@ -29,106 +29,104 @@ function Vote(value) {
     query.equalTo("user_mail", user_mail);
     query.find({
         success: function(String) {
-             re = /^.+@.+\..{2,3}$/;
-        if (re.test(user_mail)){
-              alert("Email符合，計票中...");
-         }else{
-              alert("Email格式不符，請重新輸入！");
-              window.location.href = "index.htm";
-              
-        }
+            re = /^.+@.+\..{2,3}$/;
+            if (re.test(user_mail)){
+                //alert("Email符合，計票中...");
+                query.count({
+                    success: function(count) {
+                        if(count>0){  //是否投過票
+                            query.descending("createdAt");
+                            query.find({
+                                success: function(results) { 
+                                    var object = results[0];
+                                    var date=object.createdAt;
+                                    var vote_day=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+                                    if(vote_day==today){ //今天是否投票
+                                       alert("你今天已經投過票了!");
+                                       window.location.href = "index.htm";
+                                    }else{
+                                        var school = Parse.Object.extend("school");
+                                        var school = new school();
+                                        school.set("school_num", school_num);
+                                        school.set("user_mail", user_mail);
+                                        school.save(null, {  
+                                            success: function(vote) {
 
-        },
-        error: function(error) {
-
-        }
-    });
-
-    query.count({
-        success: function(count) {
-            if(count>0){  //是否投過票
-                query.descending("createdAt");
-                query.find({
-                    success: function(results) { 
-                        var object = results[0];
-                        var date=object.createdAt;
-                        var vote_day=date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
-                        if(vote_day==today){ //今天是否投票
-                           alert("你今天已經投過票了!");
-                           window.location.href = "index.htm";
+                                            var vote = Parse.Object.extend("vote");
+                                            var query = new Parse.Query(vote);
+                                            query.equalTo("school_no", school_num);
+                                            query.find({
+                                                success: function(results) {
+                                                    var object = results[0];
+                                                    var vote_num = object.get('vote_num');
+                                                    vote_num = vote_num+1;
+                                                    results[0].save("vote_num", vote_num);
+                                                },
+                                                error: function(error) {
+                                                    alert("Error: " + error.code + " " + error.message);
+                                                }
+                                            });
+                                            alert('投票成功!');
+                                            window.location.href = "index.htm";
+                                            },
+                                            error: function(vote, error) {
+                                                alert('fail');
+                                                window.location.href = "index.htm";
+                                            }
+                                        });
+                                    }
+                                },
+                                error: function(error) {
+                                    alert("Error");
+                                    window.location.href = "index.htm";
+                                }
+                            });
                         }else{
-                           	var school = Parse.Object.extend("school");
-                           	var school = new school();
-                           	school.set("school_num", school_num);
-                           	school.set("user_mail", user_mail);
-                           	school.save(null, {  
-                             	success: function(vote) {
-
-                                var vote = Parse.Object.extend("vote");
-                                var query = new Parse.Query(vote);
-                                query.equalTo("school_no", school_num);
-                                query.find({
-                                	success: function(results) {
-                                    	var object = results[0];
-                                       	var vote_num = object.get('vote_num');
-                                       	vote_num = vote_num+1;
-                                       	results[0].save("vote_num", vote_num);
-                                   	},
-                                   	error: function(error) {
-                                    	alert("Error: " + error.code + " " + error.message);
-                                   	}
-                                });
-                                alert('投票成功!');
-                                window.location.href = "index.htm";
-                            	},
-                            	error: function(vote, error) {
-                                	alert('fail');
-                                	window.location.href = "index.htm";
-                            	}
-                        	});
+                            var school = Parse.Object.extend("school");
+                            var school = new school();
+                            school.set("school_num", school_num);
+                            school.set("user_mail", user_mail);
+                            school.save(null, { 
+                                success: function(vote) {
+                                    var vote = Parse.Object.extend("vote");
+                                    var query = new Parse.Query(vote);
+                                    query.equalTo("school_no", school_num);
+                                    query.find({
+                                        success: function(results) {
+                                        var object = results[0];
+                                        var vote_num = object.get('vote_num');
+                                        vote_num = vote_num+1;
+                                        results[0].save("vote_num", vote_num);
+                                        },
+                                        error: function(error) {
+                                            alert("Error: " + error.code + " " + error.message);
+                                        }
+                                    });
+                                    alert('投票成功!');
+                                    window.location.href = "index.htm";
+                                },
+                                error: function(vote, error) {
+                                    alert('fail');
+                                    window.location.href = "index.htm";
+                                }
+                            });
                         }
                     },
                     error: function(error) {
                         alert("Error");
                         window.location.href = "index.htm";
                     }
-                });
+                }); 
             }else{
-                var school = Parse.Object.extend("school");
-                var school = new school();
-                school.set("school_num", school_num);
-                school.set("user_mail", user_mail);
-                school.save(null, { 
-                    success: function(vote) {
-                    	var vote = Parse.Object.extend("vote");
-                        var query = new Parse.Query(vote);
-                        query.equalTo("school_no", school_num);
-                        query.find({
-                        	success: function(results) {
-                            var object = results[0];
-                            var vote_num = object.get('vote_num');
-                            vote_num = vote_num+1;
-                            results[0].save("vote_num", vote_num);
-                        	},
-                        	error: function(error) {
-                        		alert("Error: " + error.code + " " + error.message);
-                        	}
-                    	});
-                    	alert('投票成功!');
-                    	window.location.href = "index.htm";
-                    },
-                    error: function(vote, error) {
-                    	alert('fail');
-                        window.location.href = "index.htm";
-                    }
-                });
+                alert("Email格式不符，請重新輸入！");
+                window.location.href = "index.htm";
             }
         },
         error: function(error) {
-            alert("Error");
-            window.location.href = "index.htm";
         }
-    });     
+    });
+
+       
 }
 
 function list() {
